@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.6.0",
+    "generators": {
+      "beet": {
+        "generatorName": "typescript-angular",
+        "output": "./src/app/proxy",
+        "glob": "../nest-backend/dist/swagger.json",
+        "typeMappings": {
+          "DateTime": "Date"
+        },
+        "skipValidateSpec": true,
+        "additionalProperties": {
+          "modelPropertyNaming": "camelCase"
+        }
+      }
+    }
+  }
+}
+
