@@ -2,11 +2,15 @@
 README.md
 api.module.ts
 api/api.ts
-api/default.service.ts
+api/auth.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
+model/createUserDto.ts
+model/loginDto.ts
 model/models.ts
+model/registerUserDto.ts
+model/user.ts
 param.ts
 variables.ts

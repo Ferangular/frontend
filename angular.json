@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "assets/styles/styles_course.css",
               "src/styles.css"
             ],
             "scripts": []
