@@ -1,10 +1,11 @@
 import { DashboardComponent } from "./dashboard.component";
 
 
-export const DASHBOARD_ROUTES = [
+export const DASHBOARD_ROUTE = [
   { path: '' , Component: DashboardComponent,
-    childre: [
-     
+    children: [
+      {path: '', component: DashboardComponent},
+      {path: 'dashboard', component: DashboardComponent}
     ]
   }
 ]
