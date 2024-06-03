@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  BASE_PATH: 'localhost:3000',
+  jsonFile: 'assets/app-settings/app-settings.json',
+  BASE_PATH: 'http://localhost:3000'
 };

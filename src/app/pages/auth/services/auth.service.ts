@@ -3,7 +3,7 @@ import { User } from '../../../proxy/model/user';
 import { AuthStatus } from '../../../core/interfaces/auth-status.enum';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
-import { BASE_PATH } from '../../../proxy/variables';
+
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { LoginResponse } from '../../../core/interfaces/login-response.interface';
 import {  CheckTokenResponse } from '../../../core/interfaces';
