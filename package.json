@@ -7,7 +7,6 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-
     "generate-api": "openapi-generator-cli generate -i http://localhost:3000/api-json -g typescript-angular -o src/app/proxy",
     "generate-model": "npx @openapitools/openapi-generator-cli generate ",
     "openapi": "openapi-generator-cli generate"
@@ -23,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.11.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
