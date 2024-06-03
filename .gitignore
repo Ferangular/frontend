@@ -5,9 +5,9 @@
 /tmp
 /out-tsc
 /bazel-out
-src/app/core/providers
-src/app/core/services
-src/app/core/constants
+/src/app/core/providers
+/src/app/core/services
+/src/app/core/constants
 
 # Node
 /node_modules
