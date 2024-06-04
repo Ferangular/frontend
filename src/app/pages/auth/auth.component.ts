@@ -7,7 +7,6 @@ import { RouterOutlet } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterOutlet],
   template: `
-  <h1>auth</h1>
 <div class="limiter">
   <div class="container-login100">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">

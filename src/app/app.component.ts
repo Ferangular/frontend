@@ -6,9 +6,10 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <h1>aaa</h1>
-    <router-outlet></router-outlet>`,
-
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+  </div>
+  `,
 })
 export class AppComponent {
   title = 'frontend';

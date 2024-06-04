@@ -4,17 +4,21 @@ import { AuthStatus } from '../../../core/interfaces/auth-status.enum';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
-import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { LoginResponse } from '../../../core/interfaces/login-response.interface';
 import {  CheckTokenResponse } from '../../../core/interfaces';
+import {AuthService} from "../../../proxy";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class LoginService {
 
-  private readonly baseUrl: string = environment.BASE_PATH;
+  private readonly baseUrl: string = environment.basePath;
   private http = inject( HttpClient );
+  private authServiceProxy = inject(AuthService);
+  private router = inject(Router)
 
   private _currentUser = signal<User|null>(null);
   private _authStatus = signal<AuthStatus>( AuthStatus.checking );
@@ -29,27 +33,24 @@ export class AuthService {
   }
 
   private setAuthentication(user: User, token:string): boolean {
-
     this._currentUser.set( user );
     this._authStatus.set( AuthStatus.authenticated );
     localStorage.setItem('token', token);
-
     return true;
   }
 
-
-
-
-  login( email: string, password: string ): Observable<boolean> {
-
-    const url  = `${ this.baseUrl }/auth/login`;
+  login(email: string, password: string): Observable<boolean> {
     const body = { email, password };
 
-    return this.http.post<LoginResponse>( url, body )
-      .pipe(
-        map( ({ user, token }) => this.setAuthentication( user, token )),
-        catchError( err => throwError( () => err.error.message ))
-      );
+    return this.authServiceProxy.authControllerLogin(body).pipe(
+      map((response: LoginResponse) => {
+        this.setAuthentication(response.user, response.token);
+        return true;
+      }),
+      catchError(() => {
+        return of(false);
+      })
+    );
   }
 
   checkAuthStatus():Observable<boolean> {
@@ -82,7 +83,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this._currentUser.set(null);
     this._authStatus.set( AuthStatus.notAuthenticated );
-
+  this.router.navigate([''])
   }
 
 }

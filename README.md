@@ -25,12 +25,27 @@ User Authentication:
 - Avoiding manual installation of MongoDB on our local machines.
 - Ease of removing MongoDB after the course or switching to another version.
 
+## 4. OpenAPI-Generated Proxy
+
+- The proxy file is generated using the OpenAPI Generator library.
+- DTOs (Data Transfer Objects) and services defined in the backend are automatically generated in the Angular project.
+- This ensures type safety and consistency between the frontend and backend.
+- To generate the proxy, use the following script:
+- The script connects to the backend API at http://localhost:3000/api-json and generates TypeScript code in the src/app/proxy directory.
+- Important: The backend project should be in the same directory as the frontend project for the script to work correctly.
+
+├── backend
+└── frontend
+
+
+  ```bash
+  openapi-generator-cli generate -i http://localhost:3000/api-json -g typescript-angular -o src/app/proxy
+
 # Project Benefits
 Practice with advanced features of Angular.
 Experience in backend development with NestJS.
 Efficient database management with MongoDB and Docker.
 Flexibility to experiment with different MongoDB configurations without affecting the local environment.
-
 
 
 ##  Dev Commands
@@ -44,4 +59,7 @@ Flexibility to experiment with different MongoDB configurations without affectin
 # Enlaces
 <div align="center">
 1. <a href="https://www.udemy.com/course/angular-fernando-herrera/learn/lecture/40848752#overview" title="Title">Curso udemy angular</a> 
+2. <a href="https://openapi-generator.tech/" title="OpenAPI Generator"> OpenAPI Generator</a>
+3. <a href="https://www.kevinboosten.dev/how-i-use-an-openapi-spec-in-my-angular-projects"> Example tutorial</a>
+3. <a href="https://www.kevinboosten.dev/how-i-use-an-openapi-spec-in-my-angular-projects"> OpenAPI Generator</a>
 </div>

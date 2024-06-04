@@ -38,6 +38,10 @@ body, html {
 }
 
 /*---------------------------------------------*/
+.container-fluid{
+  max-width: 1200px;
+  margin: 0 auto
+}
 a {
   font-family: Poppins-Regular;
   font-size: 14px;
@@ -2903,4 +2907,24 @@ button:hover {
   flex-direction: column;
   -ms-align-items: center;
   align-items: center;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.btn-logout {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #c82333;
+}
+
+.btn-logout:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }

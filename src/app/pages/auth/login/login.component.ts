@@ -1,9 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../services/auth.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-
 import Swal from 'sweetalert2';
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -15,26 +14,25 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
 
   private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
+  private loginService = inject(LoginService);
   private router = inject(Router)
 
-
   public myForm: FormGroup = this.fb.group({
-    email: ['fernando@google.com', [Validators.required, Validators.email]],
+    email: ['fer@gmail.com', [Validators.required, Validators.email]],
     password: ['123456', [Validators.required, Validators.minLength(6)]],
   });
-
 
   login() {
     const {email, password} = this.myForm.value;
 
-    this.authService.login(email, password)
-      .subscribe({
-        next: () => this.router.navigateByUrl('/dashboard'),
+    this.loginService.login(email, password).subscribe({
+        next: (response) => {
+          console.log(response)
+          this.router.navigateByUrl('/dashboard')
+        },
         error: (message) => {
           Swal.fire('Error', message, 'error')
         }
       })
-
   }
 }

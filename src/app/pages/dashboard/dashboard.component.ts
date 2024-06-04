@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {AuthService} from "../auth/services/auth.service";
+import {LoginService} from "../auth/services/login.service";
 import {JsonPipe} from "@angular/common";
 
 @Component({
@@ -9,7 +9,7 @@ import {JsonPipe} from "@angular/common";
     JsonPipe
   ],
   template: `
-    <h1>Dashboard</h1>
+    <h1 class="m-t-3">Dashboard</h1>
     <hr>
 
     <h3>User</h3>
@@ -19,7 +19,7 @@ import {JsonPipe} from "@angular/common";
     <br>
     <!-- <span routerLink="/auth/login">Ir a login</span> -->
 
-    <button (click)="onLogout()">
+    <button class="btn-logout" (click)="onLogout()">
       Cerrar Sesión
     </button>
 
@@ -28,7 +28,7 @@ import {JsonPipe} from "@angular/common";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent {
-  private authService = inject( AuthService );
+  private authService = inject( LoginService );
 
   public user = computed(() => this.authService.currentUser() );
 
