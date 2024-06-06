@@ -10,6 +10,7 @@ git_push.sh
 index.ts
 model/createUserDto.ts
 model/loginDto.ts
+model/loginResponseDto.ts
 model/models.ts
 model/registerUserDto.ts
 model/user.ts

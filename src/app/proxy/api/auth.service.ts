@@ -23,6 +23,8 @@ import { CreateUserDto } from '../model/createUserDto';
 // @ts-ignore
 import { LoginDto } from '../model/loginDto';
 // @ts-ignore
+import { LoginResponseDto } from '../model/loginResponseDto';
+// @ts-ignore
 import { RegisterUserDto } from '../model/registerUserDto';
 // @ts-ignore
 import { User } from '../model/user';
@@ -172,10 +174,10 @@ export class AuthService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CreateUserDto>;
-    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateUserDto>>;
-    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<CreateUserDto>>;
-    public authControllerCreate(createUserDto: CreateUserDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
+    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
+    public authControllerCreate(createUserDto: CreateUserDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
+    public authControllerCreate(createUserDto: CreateUserDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (createUserDto === null || createUserDto === undefined) {
             throw new Error('Required parameter createUserDto was null or undefined when calling authControllerCreate.');
         }
@@ -186,7 +188,6 @@ export class AuthService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
-                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -226,7 +227,7 @@ export class AuthService {
         }
 
         let localVarPath = `/auth/create`;
-        return this.httpClient.request<CreateUserDto>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<any>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: createUserDto,
@@ -315,10 +316,10 @@ export class AuthService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authControllerLogin(loginDto: LoginDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
-    public authControllerLogin(loginDto: LoginDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
-    public authControllerLogin(loginDto: LoginDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public authControllerLogin(loginDto: LoginDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public authControllerLogin(loginDto: LoginDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LoginResponseDto>;
+    public authControllerLogin(loginDto: LoginDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LoginResponseDto>>;
+    public authControllerLogin(loginDto: LoginDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LoginResponseDto>>;
+    public authControllerLogin(loginDto: LoginDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (loginDto === null || loginDto === undefined) {
             throw new Error('Required parameter loginDto was null or undefined when calling authControllerLogin.');
         }
@@ -329,6 +330,7 @@ export class AuthService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
+                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -368,7 +370,7 @@ export class AuthService {
         }
 
         let localVarPath = `/auth/login`;
-        return this.httpClient.request<any>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<LoginResponseDto>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: loginDto,
@@ -389,9 +391,9 @@ export class AuthService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<RegisterUserDto>;
-    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<RegisterUserDto>>;
-    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<RegisterUserDto>>;
+    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LoginResponseDto>;
+    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LoginResponseDto>>;
+    public authControllerRegister(registerUserDto: RegisterUserDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<LoginResponseDto>>;
     public authControllerRegister(registerUserDto: RegisterUserDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (registerUserDto === null || registerUserDto === undefined) {
             throw new Error('Required parameter registerUserDto was null or undefined when calling authControllerRegister.');
@@ -443,7 +445,7 @@ export class AuthService {
         }
 
         let localVarPath = `/auth/register`;
-        return this.httpClient.request<RegisterUserDto>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<LoginResponseDto>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: registerUserDto,

@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {LoginService} from "../services/login.service";
@@ -7,7 +7,7 @@ import {LoginService} from "../services/login.service";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -7,8 +7,9 @@ import { environment } from '../../../../environments/environment';
 import { catchError, map, Observable, of } from 'rxjs';
 import { LoginResponse } from '../../../core/interfaces/login-response.interface';
 import {  CheckTokenResponse } from '../../../core/interfaces';
-import {AuthService} from "../../../proxy";
+import {AuthService, RegisterUserDto} from "../../../proxy";
 import {Router} from "@angular/router";
+import {Register} from "../../../core/interfaces/register.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -86,4 +87,18 @@ export class LoginService {
   this.router.navigate([''])
   }
 
+  register(userWithoutConfirmPassword: Register) {
+
+    return this.authServiceProxy.authControllerRegister(userWithoutConfirmPassword).pipe(
+      map((response) => {
+        console.log(response); //
+
+        this.setAuthentication(response.user, response.token);
+        return true;
+      }),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
 }

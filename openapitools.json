@@ -7,7 +7,7 @@
       "beet": {
         "generatorName": "typescript-angular",
         "output": "./src/app/proxy",
-        "glob": "../nest-backend/dist/swagger.json",
+        "glob": "../backend/dist/swagger.json",
         "typeMappings": {
           "DateTime": "Date"
         },
